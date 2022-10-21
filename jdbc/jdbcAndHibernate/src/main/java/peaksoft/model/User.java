@@ -1,19 +1,28 @@
 package peaksoft.model;
 
-import javax.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.annotations.OnDelete;
 
-@Table
+import jakarta.persistence.*;
+@Entity
+@Getter
+@Setter
+@ToString
+@Table(name = "users")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(name = "user_name")
     private String name;
 
-    @Column
+    @Column(name = "user_last_name")
     private String lastName;
 
-    @Column
+    @Column(name = "user_age")
     private Byte age;
 
     public User() {
@@ -24,37 +33,4 @@ public class User {
         this.lastName = lastName;
         this.age = age;
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public Byte getAge() {
-        return age;
-    }
-
-    public void setAge(Byte age) {
-        this.age = age;
-    }
-
 }
